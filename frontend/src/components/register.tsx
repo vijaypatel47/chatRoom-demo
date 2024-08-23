@@ -21,7 +21,6 @@ const Register: React.FC = () => {
         await axios.post('http://localhost:3001/user/register', {...values})
         .then(response => {
             navigate('login')
-            alert('Registration successful!');
             console.log(response)
         })
         .catch(error =>{
