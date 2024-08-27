@@ -11,8 +11,9 @@ const ChatRoom: React.FC = () => {
     socket.on('message', (msg: string) => {
       setMessages(prevMessages => [...prevMessages, msg]);
     });
+    console.log(setMessages)
 
-    let length_of_string = setMessages.length
+    length_of_string = setMessages.length + 1
 
     document.title = `msg${length_of_string}`
 
