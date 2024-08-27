@@ -12,6 +12,10 @@ const ChatRoom: React.FC = () => {
       setMessages(prevMessages => [...prevMessages, msg]);
     });
 
+    length_of_string = setMessages.length
+
+    document.title = `msg${length_of_string}`
+
     return () => {
       socket.off('message');
     };
