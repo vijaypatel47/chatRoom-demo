@@ -7,12 +7,13 @@ const ChatRoom: React.FC = () => {
   const [messages, setMessages] = useState<string[]>([]);
   const [message, setMessage] = useState('');
 
+  let length_of_string = messages.length
+  document.title = `msg(${length_of_string})`
+  console.log(messages)
+
   useEffect(() => {
     socket.on('message', (msg: string) => {
       setMessages(prevMessages => [...prevMessages, msg]);
-      let length_of_string = messages.length
-      document.title = `msg(${length_of_string})`
-      console.log(messages)
     });
 
 
