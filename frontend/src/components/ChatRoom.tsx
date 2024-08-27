@@ -10,12 +10,11 @@ const ChatRoom: React.FC = () => {
   useEffect(() => {
     socket.on('message', (msg: string) => {
       setMessages(prevMessages => [...prevMessages, msg]);
+      let length_of_string = messages.length
+      document.title = `msg(${length_of_string})`
+      console.log(messages)
     });
 
-    let length_of_string = messages.length
-    document.title = `msg(${length_of_string})`
-    
-    console.log(messages)
 
 
     return () => {
