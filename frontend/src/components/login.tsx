@@ -24,7 +24,6 @@ const Login: React.FC = () => {
               if(response.data.access_token){
                 localStorage.setItem('accessToken', response.data.access_token);
                 navigate("/chatroom")
-                alert('Login successful!');
               }
               else{
                 alert('please provide correct password')

@@ -7,16 +7,10 @@ const ChatRoom: React.FC = () => {
   const [messages, setMessages] = useState<string[]>([]);
   const [message, setMessage] = useState('');
 
-  let length_of_string ;
-
   useEffect(() => {
     socket.on('message', (msg: string) => {
       setMessages(prevMessages => [...prevMessages, msg]);
     });
-
-    length_of_string = sendMessage.length
-
-    document.title = `msg${length_of_string}`
 
     return () => {
       socket.off('message');
@@ -27,6 +21,7 @@ const ChatRoom: React.FC = () => {
     socket.emit('message', message);
     setMessage('');
   };
+
 
   return (
     <div className="max-w-md mx-auto mt-10">
