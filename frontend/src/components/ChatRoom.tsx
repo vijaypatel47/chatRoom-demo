@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import io from 'socket.io-client';
+import io, {Socket} from 'socket.io-client';
 
-const socket = io('http://localhost:3001');
+const socket:Socket = io('http://localhost:3001');
 
 interface Message {
   msg: string;
@@ -18,13 +18,16 @@ const ChatRoom: React.FC = () => {
 
   useEffect(() => {
     // Store the client's socket ID
-    // socket.on('connect', () => {
-    //   setSocketId(socket.id);
-    // });
+    socket.on('connect', () => {
+      if(socket.id){
+        setSocketId(socket.id);
+        console.log(socketId)
+      }
+    });
+    
 
     socket.on('message', (data: Message) => {
       setMessages((prevMessages) => [...prevMessages, data]);
-      // setSocketId(data.sender)
     });
 
     return () => {
