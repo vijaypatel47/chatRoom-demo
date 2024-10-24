@@ -18,7 +18,7 @@ const Login: React.FC = () => {
     initialValues:initialValues,
     validationSchema:RegistratonSchema,
     onSubmit:async(values)=>{
-        await axios.post('http://localhost:3001/user/login', values ) 
+        await axios.post('https://chatroom-backend-weld.vercel.app/user/login', values ) 
         .then(response => {
             if(response.status === 201){
               if(response.data.access_token){
