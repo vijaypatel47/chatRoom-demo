@@ -30,6 +30,10 @@ const ChatRoom: React.FC = () => {
       }
     });
 
+    socket.on('connect_error', (error) => {
+      console.error('Connection error:', error);
+    });
+
     socket.on('message', (data: Message) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
