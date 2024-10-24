@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import io, {Socket} from 'socket.io-client';
 
-const socket:Socket = io('https://chatroom-backend-weld.vercel.app');
+const socket:Socket = io('http://localhost:3001');
 
 interface Message {
   msg: string;
@@ -85,7 +85,7 @@ export default ChatRoom;
 // import { useEffect, useState } from 'react';
 // import io from 'socket.io-client';
 
-// const socket = io('https://chatroom-backend-weld.vercel.app');
+// const socket = io('http://localhost:3001');
 
 // const ChatRoom: React.FC = () => {
 //   const [messages, setMessages] = useState<string[]>([]);
