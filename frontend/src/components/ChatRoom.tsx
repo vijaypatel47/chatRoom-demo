@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import io, {Socket} from 'socket.io-client';
 
-const socket:Socket = io('https://chatroom-backend-weld.vercel.app',{
+const socket:Socket = io('http://localhost:3001',{
   transports: ['websocket'],
 });
+
 
 
 interface Message {
@@ -21,14 +22,13 @@ const ChatRoom: React.FC = () => {
 
   useEffect(() => {
     // Store the client's socket ID
-    
+
     socket.on('connect', () => {
       if(socket.id){
         setSocketId(socket.id);
         console.log(socket.id)
       }
     });
-    
 
     socket.on('message', (data: Message) => {
       setMessages((prevMessages) => [...prevMessages, data]);
@@ -88,7 +88,7 @@ export default ChatRoom;
 // import { useEffect, useState } from 'react';
 // import io from 'socket.io-client';
 
-// const socket = io('https://chatroom-backend-weld.vercel.app');
+// const socket = io('http://localhost:3001');
 
 // const ChatRoom: React.FC = () => {
 //   const [messages, setMessages] = useState<string[]>([]);
