@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import io, {Socket} from 'socket.io-client';
 
-const socket:Socket = io('https://chatroom-backend-weld.vercel.app');
+const socket:Socket = io('https://chatroom-backend-weld.vercel.app',{
+  transports: ['websocket'],
+});
+
 
 interface Message {
   msg: string;
